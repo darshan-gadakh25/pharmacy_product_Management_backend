@@ -21,13 +21,10 @@ public class CustomerController {
 
 	private final CustomerService customerService;
 
-	@PostMapping
+	@PostMapping()
 	public ResponseEntity<?> addCustomer(@RequestBody CustomerRequest dto) {
 
-		try {
-			return ResponseEntity.status(HttpStatus.CREATED).body(customerService.addCustomer(dto));
-		} catch (Exception e) {
-			return ResponseEntity.status(HttpStatus.CONFLICT).body(new ApiResponse(e.getMessage(),"Failed"));
-		}
+		return ResponseEntity.status(HttpStatus.CREATED).body(customerService.addCustomer(dto));
+
 	}
 }
