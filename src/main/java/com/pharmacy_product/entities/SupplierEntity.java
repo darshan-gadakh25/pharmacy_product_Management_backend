@@ -33,5 +33,6 @@ public class SupplierEntity extends BaseEntity{
 	private UserEntity userDetails;
 
 	@OneToMany(mappedBy = "supplier", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@com.fasterxml.jackson.annotation.JsonIgnore
 	private java.util.List<ProductEntity> products;
 }

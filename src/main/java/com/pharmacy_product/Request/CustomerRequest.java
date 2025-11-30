@@ -20,6 +20,7 @@ public class CustomerRequest {
 	private UserRequest userDetails;
 	private Gender gender;
 	private LocalDate dateOfBirth;
+	private String address;
 	private String altMobile;
 	private Integer loyaltyPoints = 0;
 }
