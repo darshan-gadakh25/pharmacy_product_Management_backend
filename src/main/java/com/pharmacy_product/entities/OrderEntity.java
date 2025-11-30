@@ -19,8 +19,8 @@ import lombok.*;
 @ToString(callSuper = true , exclude = {"customer","orderItems"})
 public class OrderEntity extends BaseEntity {
 
-	@Column(nullable = false, precision = 10, scale = 2)
-	private BigDecimal totalAmount;
+	
+	private double totalAmount;
 	
 	@Enumerated(EnumType.STRING)
 	@Column(nullable = false)

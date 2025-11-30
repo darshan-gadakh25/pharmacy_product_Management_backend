@@ -14,4 +14,5 @@ public class AuthResponse {
 	private String mobile;
 	private UserRole role;
 	private String message;
+	private String token;
 }
