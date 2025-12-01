@@ -1,6 +1,5 @@
 package com.pharmacy_product.Request;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 import com.pharmacy_product.entities.enums.PaymentMethod;
@@ -8,20 +7,16 @@ import com.pharmacy_product.entities.enums.PaymentMethod;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
 @Setter
 @Getter
 @NoArgsConstructor
-@ToString
-public class OrderRequest {
-
+public class OrderPaymentRequest {
     private double totalAmount;
     private String deliveryAddress;
     private PaymentMethod paymentMethod;
     private String prescriptionImage;
     private Long customerId;
     private List<OrderItemRequest> orderItems;
-
-   
+    private CreditCardRequest creditCard; // Only required if paymentMethod is CREDIT_CARD
 }

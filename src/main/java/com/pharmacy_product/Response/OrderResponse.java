@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import com.pharmacy_product.entities.enums.OrderStatus;
+import com.pharmacy_product.entities.enums.PaymentMethod;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,7 +23,7 @@ public class OrderResponse {
     private OrderStatus status;
     private LocalDateTime orderDate;
     private String deliveryAddress;
-    private String paymentMethod;
+    private PaymentMethod paymentMethod;
     private Long customerId;
     private List<OrderItemResponse> orderItems;
 

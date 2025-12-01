@@ -1,6 +1,7 @@
 package com.pharmacy_product.service.impl;
 
 import org.modelmapper.ModelMapper;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -24,6 +25,7 @@ public class CustomerServiceImpl implements CustomerService {
 	private final CustomerRepository customerRepository;
 	private final UserRepository userRepository;
 	private final ModelMapper mapper;
+	private final PasswordEncoder passwordEncoder;
 
 	@Override
 	public ApiResponse addCustomer(CustomerRequest customerRequest) {
@@ -34,6 +36,7 @@ public class CustomerServiceImpl implements CustomerService {
 
 		CustomerEntity customer = mapper.map(customerRequest, CustomerEntity.class);
 		customer.getUserDetails().setRole(UserRole.CUSTOMER);
+		customer.getUserDetails().setPassword(passwordEncoder.encode(customer.getUserDetails().getPassword()));
 
 		customerRepository.save(customer);
 
