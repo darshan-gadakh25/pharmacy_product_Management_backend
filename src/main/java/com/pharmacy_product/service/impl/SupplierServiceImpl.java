@@ -3,6 +3,7 @@ package com.pharmacy_product.service.impl;
 import java.util.List;
 
 import org.modelmapper.ModelMapper;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -25,6 +26,7 @@ public class SupplierServiceImpl implements SupplierService {
 	private final SupplierRepository supplierRepository;
 	private final UserRepository userRepository;
 	private final ModelMapper mapper;
+	private final PasswordEncoder passwordEncoder;
 
 	@Override
 	public ApiResponse addSupplier(SupplierRequest supplierRequest) {
@@ -35,6 +37,7 @@ public class SupplierServiceImpl implements SupplierService {
 
 		SupplierEntity supplier = mapper.map(supplierRequest, SupplierEntity.class);
 		supplier.getUserDetails().setRole(UserRole.SUPPLIER);
+		supplier.getUserDetails().setPassword(passwordEncoder.encode(supplier.getUserDetails().getPassword()));
 
 		supplierRepository.save(supplier);
 

@@ -9,9 +9,14 @@ import com.pharmacy_product.Response.ProductResponse;
 public interface ProductService {
 
 	ApiResponse addProduct(ProductRequest product);
+
 	List<ProductResponse> getAllProducts();
+
 	ProductResponse getProductById(Long id);
+
 	ApiResponse updateProduct(Long id, ProductRequest product);
+
 	ApiResponse deleteProduct(Long id);
+
 	List<ProductResponse> searchProducts(String query);
 }

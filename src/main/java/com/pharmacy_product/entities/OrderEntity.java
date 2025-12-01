@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import com.pharmacy_product.entities.enums.OrderStatus;
+import com.pharmacy_product.entities.enums.PaymentMethod;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -30,7 +31,9 @@ public class OrderEntity extends BaseEntity {
 	
 	private String deliveryAddress;
 	
-	private String paymentMethod;
+	@Enumerated(EnumType.STRING)
+	@Column(name = "payment_method")
+	private PaymentMethod paymentMethod;
 	
 	private String prescriptionImage;
 
@@ -40,4 +43,7 @@ public class OrderEntity extends BaseEntity {
 
 	@OneToMany(mappedBy = "order", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<OrderItemEntity> orderItems;
+
+	@OneToOne(mappedBy = "order", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private BillingEntity billing;
 }

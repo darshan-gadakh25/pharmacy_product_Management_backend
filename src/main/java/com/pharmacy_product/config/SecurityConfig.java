@@ -49,10 +49,11 @@ public class SecurityConfig {
         http.csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(authz -> authz
                 .requestMatchers("/users/register", "/users/signin").permitAll()
+                .requestMatchers("/customers").permitAll()
                 .requestMatchers("/swagger-ui/**", "/v3/api-docs/**").permitAll()
-                .requestMatchers("/products/**").hasAnyRole("ADMIN", "SUPPLIER", "CUSTOMER")
+                .requestMatchers("/products").permitAll()
                 .requestMatchers("/orders/**").hasAnyRole("ADMIN", "CUSTOMER")
-                .requestMatchers("/suppliers/**").hasRole("ADMIN")
+                .requestMatchers("/suppliers").permitAll()
                 .requestMatchers("/customers/**").hasAnyRole("ADMIN", "CUSTOMER")
                 .anyRequest().authenticated()
             )
